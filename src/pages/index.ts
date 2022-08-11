@@ -1,1 +1,1 @@
-export * from './redux';
+export * from '../feature/redux';
