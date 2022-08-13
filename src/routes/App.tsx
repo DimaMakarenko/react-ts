@@ -1,6 +1,6 @@
 import { Redux } from 'pages';
 import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom';
-
+import '../index.css';
 import { Routes } from './Routes';
 
 export const App = () => {

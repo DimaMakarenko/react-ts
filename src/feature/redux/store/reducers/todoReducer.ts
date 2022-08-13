@@ -10,7 +10,7 @@ const initialState: TodoState = {
 };
 
 export const todoReducer: Reducer<TodoState> = (
-  state: TodoState = initialState,
+  state = initialState,
   action: TodoAction,
 ): TodoState => {
   switch (action.type) {

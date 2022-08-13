@@ -1,4 +1,4 @@
-type User = { id: number; name: string };
+type User = { id: number; name: string; username: string; email: string };
 
 export interface UserState {
   users: User[];

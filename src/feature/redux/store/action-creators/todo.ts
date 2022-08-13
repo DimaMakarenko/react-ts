@@ -1,12 +1,12 @@
-import axios from 'axios';
 import { Dispatch } from 'redux';
 import { TodoActionTypes, TodoAction } from '../../types/todo';
+import { api, URLS } from 'feature/redux/api';
 
 export const fetchTodos = (page = 1, limit = 10) => {
   return async (dispatch: Dispatch<TodoAction>) => {
     try {
       dispatch({ type: TodoActionTypes.FETCH_TODOS });
-      const response = await axios.get('https://jsonplaceholder.typicode.com/users', {
+      const response = await api.get<TodoAction>(URLS.todoUrl, {
         params: { _page: page, _limit: limit },
       });
       setTimeout(() => {
@@ -18,9 +18,7 @@ export const fetchTodos = (page = 1, limit = 10) => {
   };
 };
 
-export const setTodoPage = (page: number): TodoAction => {
-  return {
-    type: TodoActionTypes.SET_TODO_PAGE,
-    payload: page,
-  };
-};
+export const setTodoPage = (page: number): TodoAction => ({
+  type: TodoActionTypes.SET_TODO_PAGE,
+  payload: page,
+});
