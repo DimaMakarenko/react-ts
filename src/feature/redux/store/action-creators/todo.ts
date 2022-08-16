@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { TodoActionTypes, TodoAction } from '../../types/todo';
-import { api, URLS } from 'feature/redux/api';
+import { api, URLS } from 'api';
 
 export const fetchTodos = (page = 1, limit = 10) => {
   return async (dispatch: Dispatch<TodoAction>) => {

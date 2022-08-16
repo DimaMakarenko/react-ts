@@ -1,4 +1,4 @@
-import { api, URLS } from 'feature/redux/api';
+import { api, URLS } from 'api';
 import { Dispatch } from 'redux';
 import { UserActionTypes, UserAction } from '../../types/user';
 
