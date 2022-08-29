@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from './../../types/users';
+import { fetchUsers } from './actions';
 
 type UsersState = {
   users: User[];
@@ -17,15 +18,29 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    userFetching(state: UsersState) {
-      state.isLoading = true;
-    },
-    userFetchingSuccess(state: UsersState, action: PayloadAction<User[]>) {
+    // userFetching(state: UsersState) {
+    //   state.isLoading = true;
+    // },
+    // userFetchingSuccess(state: UsersState, action: PayloadAction<User[]>) {
+    //   state.isLoading = false;
+    //   state.error = '';
+    //   state.users = action.payload;
+    // },
+    // userFetchingError(state, action: PayloadAction<string>) {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
+  },
+  extraReducers: {
+    [fetchUsers.fulfilled.type]: (state: UsersState, action: PayloadAction<User[]>) => {
       state.isLoading = false;
       state.error = '';
       state.users = action.payload;
     },
-    userFetchingError(state, action: PayloadAction<string>) {
+    [fetchUsers.pending.type]: (state: UsersState) => {
+      state.isLoading = true;
+    },
+    [fetchUsers.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
